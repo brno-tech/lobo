@@ -1,0 +1,376 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Western Dark Theme - Lobo do Forró */
+    --background: 20 30% 8%;
+    --foreground: 35 30% 85%;
+
+    --card: 20 25% 12%;
+    --card-foreground: 35 30% 85%;
+
+    --popover: 20 25% 10%;
+    --popover-foreground: 35 30% 85%;
+
+    /* Dourado envelhecido */
+    --primary: 43 70% 47%;
+    --primary-foreground: 20 30% 8%;
+
+    /* Marrom couro */
+    --secondary: 30 50% 35%;
+    --secondary-foreground: 35 30% 90%;
+
+    /* Bege pergaminho */
+    --muted: 35 25% 75%;
+    --muted-foreground: 20 25% 25%;
+
+    /* Laranja pôr do sol */
+    --accent: 32 90% 45%;
+    --accent-foreground: 20 30% 8%;
+
+    /* Vermelho terroso */
+    --destructive: 15 70% 35%;
+    --destructive-foreground: 35 30% 90%;
+
+    --border: 30 30% 25%;
+    --input: 30 30% 20%;
+    --ring: 43 70% 47%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens */
+    --wood-dark: 20 35% 10%;
+    --wood-medium: 25 30% 18%;
+    --leather: 25 45% 25%;
+    --gold: 43 70% 47%;
+    --gold-light: 43 65% 60%;
+    --sand: 35 35% 75%;
+    --sunset-orange: 32 90% 45%;
+    --sunset-red: 15 70% 35%;
+    
+    /* WhatsApp */
+    --whatsapp: 142 70% 45%;
+    --whatsapp-foreground: 0 0% 100%;
+
+    /* Sidebar (shadcn) */
+    --sidebar-background: 20 35% 10%;
+    --sidebar-foreground: 35 30% 85%;
+    --sidebar-primary: 43 70% 47%;
+    --sidebar-primary-foreground: 20 30% 8%;
+    --sidebar-accent: 30 50% 35%;
+    --sidebar-accent-foreground: 35 30% 90%;
+    --sidebar-border: 30 30% 25%;
+    --sidebar-ring: 43 70% 47%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Lato', sans-serif;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect fill='%231a1410' width='100' height='100'/%3E%3Cg fill-opacity='0.05'%3E%3Crect fill='%23000' x='0' y='0' width='50' height='50'/%3E%3Crect fill='%23000' x='50' y='50' width='50' height='50'/%3E%3C/g%3E%3C/svg%3E");
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Cinzel', serif;
+  }
+
+  .font-display {
+    font-family: 'Rye', serif;
+  }
+
+  .font-heading {
+    font-family: 'Cinzel', serif;
+  }
+
+  /* Better text rendering */
+  body, button, input, textarea {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  /* ============================================
+     SCROLL REVEAL ANIMATION SYSTEM
+     ============================================ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Stagger children */
+  .stagger-children .reveal:nth-child(1) { transition-delay: 0ms; }
+  .stagger-children .reveal:nth-child(2) { transition-delay: 80ms; }
+  .stagger-children .reveal:nth-child(3) { transition-delay: 160ms; }
+  .stagger-children .reveal:nth-child(4) { transition-delay: 240ms; }
+  .stagger-children .reveal:nth-child(5) { transition-delay: 320ms; }
+  .stagger-children .reveal:nth-child(6) { transition-delay: 400ms; }
+  .stagger-children .reveal:nth-child(7) { transition-delay: 480ms; }
+  .stagger-children .reveal:nth-child(8) { transition-delay: 560ms; }
+  .stagger-children .reveal:nth-child(9) { transition-delay: 640ms; }
+  .stagger-children .reveal:nth-child(10) { transition-delay: 720ms; }
+  .stagger-children .reveal:nth-child(11) { transition-delay: 800ms; }
+  .stagger-children .reveal:nth-child(12) { transition-delay: 880ms; }
+
+  /* ============================================
+     WOOD TEXTURES
+     ============================================ */
+  .wood-texture {
+    position: relative;
+    background: linear-gradient(180deg, hsl(var(--wood-dark)) 0%, hsl(var(--background)) 100%);
+  }
+
+  .wood-texture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  /* ============================================
+     WANTED POSTER CARD
+     ============================================ */
+  .wanted-card {
+    @apply relative rounded-sm;
+    background: linear-gradient(180deg, hsl(35 35% 80%) 0%, hsl(35 30% 70%) 100%);
+    color: hsl(20 25% 20%);
+    box-shadow: 
+      inset 0 0 30px rgba(0,0,0,0.15),
+      0 4px 20px rgba(0,0,0,0.5);
+  }
+
+  .wanted-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5'/%3E%3CfeDiffuseLighting surfaceScale='2' lighting-color='%23d4c4a8'%3E%3CfeDistantLight azimuth='45' elevation='60'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='0.3'/%3E%3C/svg%3E");
+    opacity: 0.2;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  /* ============================================
+     WESTERN FRAME (fotos e vídeo)
+     ============================================ */
+  .western-frame {
+    @apply relative;
+    border: 8px solid hsl(var(--leather));
+    box-shadow: 
+      inset 0 0 20px rgba(0,0,0,0.4),
+      0 8px 30px rgba(0,0,0,0.6);
+  }
+
+  .western-frame::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border: 2px solid hsl(var(--gold) / 0.5);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ============================================
+     GOLD TEXT GLOW
+     ============================================ */
+  .gold-glow {
+    text-shadow: 
+      0 0 10px hsl(var(--gold) / 0.5),
+      0 2px 4px rgba(0,0,0,0.5);
+  }
+
+  /* ============================================
+     ROPE BORDER
+     ============================================ */
+  .rope-border {
+    border: 4px solid transparent;
+    background: 
+      linear-gradient(hsl(var(--card)), hsl(var(--card))) padding-box,
+      repeating-linear-gradient(
+        45deg,
+        hsl(var(--leather)) 0px,
+        hsl(var(--leather)) 3px,
+        hsl(var(--gold) / 0.3) 3px,
+        hsl(var(--gold) / 0.3) 6px
+      ) border-box;
+  }
+
+  /* ============================================
+     SALOON PLANK (banner CTA)
+     ============================================ */
+  .saloon-plank {
+    @apply relative;
+    background: linear-gradient(
+      90deg,
+      hsl(25 30% 15%) 0%,
+      hsl(25 35% 20%) 20%,
+      hsl(25 30% 18%) 40%,
+      hsl(25 35% 22%) 60%,
+      hsl(25 30% 16%) 80%,
+      hsl(25 35% 19%) 100%
+    );
+    box-shadow: 
+      inset 0 2px 4px rgba(255,255,255,0.05),
+      inset 0 -2px 4px rgba(0,0,0,0.3),
+      0 4px 20px rgba(0,0,0,0.5);
+  }
+
+  .saloon-plank::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='wood'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.15 0.02' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23wood)' opacity='0.06'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.4;
+    border-radius: inherit;
+  }
+
+  /* ============================================
+     WHATSAPP FLOAT PULSE
+     ============================================ */
+  .whatsapp-pulse {
+    animation: whatsapp-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes whatsapp-pulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 hsl(var(--whatsapp) / 0.7);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 0 15px hsl(var(--whatsapp) / 0);
+    }
+  }
+
+  /* ============================================
+     CTA BUTTON GLOW PULSE
+     ============================================ */
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(var(--gold) / 0.3); }
+    50% { box-shadow: 0 0 40px hsl(var(--gold) / 0.6); }
+  }
+
+  /* ============================================
+     STAR DECORATIONS (animated)
+     ============================================ */
+  .star-float {
+    animation: star-float 6s ease-in-out infinite;
+  }
+
+  .star-float-delayed {
+    animation: star-float 6s ease-in-out infinite;
+    animation-delay: -3s;
+  }
+
+  @keyframes star-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+    50% { transform: translateY(-8px) rotate(5deg); opacity: 0.5; }
+  }
+
+  /* ============================================
+     BARBED WIRE SEPARATOR
+     ============================================ */
+  .barbed-wire-separator {
+    height: 2px;
+    background: repeating-linear-gradient(
+      90deg,
+      hsl(var(--gold) / 0.4) 0px,
+      hsl(var(--gold) / 0.4) 10px,
+      transparent 10px,
+      transparent 14px,
+      hsl(var(--gold) / 0.6) 14px,
+      hsl(var(--gold) / 0.6) 18px,
+      transparent 18px,
+      transparent 22px
+    );
+  }
+
+  /* ============================================
+     TESTIMONIAL CARD
+     ============================================ */
+  .testimonial-card {
+    @apply bg-card/80 border border-border/50 rounded-lg p-6 relative;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .testimonial-card:hover {
+    border-color: hsl(var(--primary) / 0.4);
+    transform: translateY(-2px);
+  }
+}
+
+@layer utilities {
+  .text-shadow-gold {
+    text-shadow: 0 2px 10px hsl(var(--gold) / 0.5);
+  }
+
+  .bg-wood-gradient {
+    background: linear-gradient(180deg, hsl(var(--wood-dark)) 0%, hsl(var(--background)) 100%);
+  }
+
+  .bg-gold-gradient {
+    background: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(35 65% 35%) 100%);
+  }
+
+  .bg-sunset-gradient {
+    background: linear-gradient(180deg, hsl(var(--sunset-orange)) 0%, hsl(var(--sunset-red)) 100%);
+  }
+
+  .shadow-gold {
+    box-shadow: 0 4px 20px -4px hsl(var(--gold) / 0.4);
+  }
+
+  .shadow-wood {
+    box-shadow: 0 10px 40px -10px hsl(20 30% 5% / 0.8);
+  }
+}
