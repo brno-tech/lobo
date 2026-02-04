@@ -1,4 +1,4 @@
-import { User, Users, Music4, MessageCircle } from "lucide-react";
+﻿import { User, Users, Music4, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WHATSAPP_LINK } from "@/lib/constants";
 import { useReveal } from "@/hooks/useReveal";
@@ -7,7 +7,7 @@ const formats = [
   {
     icon: User,
     title: "Solo",
-    description: "Voz e violão para eventos intimistas e bares.",
+    description: "Teclado, Voz e violão para eventos pequenos e bares.",
     detail: "Perfeito para ambientes acolhedores",
   },
   {
@@ -82,3 +82,4 @@ export const FormatsSection = () => {
     </section>
   );
 };
+
